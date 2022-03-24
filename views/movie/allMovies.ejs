@@ -1,0 +1,25 @@
+<% include ../header %>
+
+<a href="movies/create" class="btn btn-primary">Add Movies</a>
+
+<% for(let data of ListMovies){ %>
+<div class="card">
+  <h5 class="card-header"><%= data.name %></h5>
+  <div class="card-body">
+    <h5 class="card-title">Air Date: <%= data.release_on %></h5>
+
+    <a href="movies/update/<%= data.id %>" class="btn btn-primary">Edit</a>
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#data<%= data.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Delete Data
+    </a>
+  </div>
+</div>
+
+<div class="collapse" id="data<%= data.id %>">
+    <div class="card card-body">
+        Are you Sure ? Want to delete <%= data.name %> ?
+        <a href="movies/delete/<%= data.id %>" class="btn btn-primary">Delete</a>
+    </div>
+</div>
+
+<% } %>
